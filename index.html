@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARB - Tienda de Electrónica y Gaming</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Tienda.css">
+</head>
+<body>
+
+    <header class="main-header-container">
+        <nav class="main-header">
+            <div class="header-container">
+                <div class="logo">
+                    <img src="https://placehold.co/100x30/0070d1/ffffff?text=JARB" alt="Logo Texto JARB">
+                </div>
+                
+                <div class="main-nav">
+                    <ul class="nav-links">
+                        <li class="nav-item">
+                            <a href="#">Productos <i class="fas fa-angle-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="menu-column">
+                                    <h4 class="menu-title">Departamentos</h4>
+                                    <a href="#catalogo-section" class="menu-item" onclick="filterByCategory('Celulares')"><i class="fas fa-mobile-alt"></i> Telefonía y Celulares</a>
+                                    <a href="#catalogo-section" class="menu-item" onclick="filterByCategory('PC Gaming')"><i class="fas fa-desktop"></i> Computación y Laptops</a>
+                                    <a href="#catalogo-section" class="menu-item" onclick="filterByCategory('TV')"><i class="fas fa-tv"></i> TV y Audio</a>
+                                    <a href="#catalogo-section" class="menu-item" onclick="filterByCategory('Camaras')"><i class="fas fa-camera"></i> Fotografía</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#consolas">Gaming <i class="fas fa-angle-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="menu-column">
+                                    <h4 class="menu-title">Plataformas</h4>
+                                    <a href="#catalogo-section" class="menu-item" onclick="filterByCategory('Consolas')"><span class="icon fas fa-gamepad"></span> Consolas y Videojuegos</a>
+                                    <a href="#catalogo-section" class="menu-item" onclick="filterByCategory('Accesorios')"><span class="icon fas fa-headset"></span> Accesorios Gamer</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="#offers-section">Ofertas</a></li>
+                    </ul>
+                </div>
+                
+                <form class="search-bar" onsubmit="return false;">
+                    <input type="search" id="search-input" placeholder="Buscar productos, juegos..." aria-label="Buscar">
+                </form>
+
+                <div class="utility-icons">
+                    <a href="#perfil"><i class="fas fa-user"></i></a>
+                    
+                    <img src="Logo.png" alt="Logo JARB" class="header-mini-logo" onerror="this.src='https://placehold.co/35x35/0070d1/ffffff?text=J'">
+
+                    <a href="#" id="open-cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="ticker-bar">
+        <div class="ticker-content">
+            <p>PROMOCIÓN: 3 y 6 Meses Sin Intereses con <abbr title="Tarjeta de Crédito JARB">TC JARB</abbr>.</p>
+            <p>¡ENVÍO GRATIS en compras mayores a $2,999 MXN!</p>
+            <p>LANZAMIENTO: Nueva Tarjeta Gráfica RTX 5000 disponible para reserva.</p>
+            <p>OFERTAS ESPECIALES: Hasta 40% de descuento en Electrónica.</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero-slider-container">
+            <div class="hero-slide active" id="hero-slide-1">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">PC Gaming JARB</h1>
+                        <p class="hero-description">Potencia tu juego con la nueva línea de PCs de alto rendimiento.</p>
+                        <a href="#catalogo-section" class="hero-button" onclick="filterByCategory('PC Gaming')">Ver Catálogo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" id="hero-slide-2">
+                <div class="hero-overlay" style="background: rgba(0,0,0,0.3);">
+                    <div class="hero-content">
+                        <h1 class="hero-title" style="color: #fff; text-shadow: 0 0 10px #000;">¡GRANDES OFERTAS!</h1>
+                        <p class="hero-description">Descuentos increíbles en tecnología seleccionada.</p>
+                        <a href="#offers-section" class="hero-button" style="background-color: #ffcc00; color: #333;">Ir a Ofertas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-gallery" id="offers-section">
+            <div class="gallery-container">
+                <h2 class="master-title" style="color: var(--secondary-color);"><i class="fas fa-tags"></i> OFERTAS DEL MES</h2>
+                <div class="games-carousel-wrapper">
+                    <button class="carousel-nav-btn left" id="offers-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="product-carousel">
+                        <div class="carousel-track" id="offers-carousel-track">
+                            </div>
+                    </div>
+                    <button class="carousel-nav-btn right" id="offers-next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-gallery games-carousel">
+            <div class="gallery-container">
+                <h2 class="master-title" style="margin-bottom: 30px;">Juegos Destacados</h2>
+                <p style="margin-bottom: 20px;">Nintendo, PlayStation, Xbox y PC</p>
+                <div class="games-carousel-wrapper">
+                    <button class="carousel-nav-btn left" id="games-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="product-carousel">
+                        <div class="carousel-track" id="games-carousel-track">
+                            </div>
+                    </div>
+                    <button class="carousel-nav-btn right" id="games-next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-listing" id="catalogo-section">
+            <div class="listing-header">
+                <h2>Catálogo Completo</h2>
+                <div class="sort-options">
+                    <select id="sort-select">
+                        <option value="relevance">Relevancia</option>
+                        <option value="price-asc">Precio: Más bajo primero</option>
+                        <option value="price-desc">Precio: Más alto primero</option>
+                        <option value="date-desc">Fecha: Más nuevos primero</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="listing-content">
+                <aside class="filter-sidebar">
+                    <h3>Filtrar por</h3>
+                    <div class="filter-group">
+                        <h4>Categoría</h4>
+                        <label><input type="checkbox" class="category-filter" value="PC Gaming"> PC Gaming</label>
+                        <label><input type="checkbox" class="category-filter" value="Consolas"> Consolas</label>
+                        <label><input type="checkbox" class="category-filter" value="Celulares"> Celulares</label>
+                        <label><input type="checkbox" class="category-filter" value="Accesorios"> Accesorios</label>
+                        <label><input type="checkbox" class="category-filter" value="TV"> TV y Audio</label>
+                        <label><input type="checkbox" class="category-filter" value="Camaras"> Cámaras</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Precio Máximo (MXN)</h4>
+                        <p>$<span id="price-value">70,000</span></p>
+                        <input type="range" id="price-range" min="500" max="70000" value="70000" step="500">
+                    </div>
+                </aside>
+
+                <div class="product-grid-main" id="product-grid">
+                    </div>
+            </div>
+
+            <div class="listing-footer">
+                <button id="load-more-btn" class="load-more-btn">Cargar más productos</button>
+                <p id="no-more-products" style="display:none; color: #777; margin-top: 10px;">¡Es todo por ahora!</p>
+            </div>
+        </section>
+        
+        <section class="interactive-gallery">
+            <div class="gallery-container" style="text-align: center;">
+                <h2 class="master-title" style="font-size: 2.5em; margin-bottom: 20px;">Noticias y Opiniones</h2>
+
+                <div class="typing-text-container">
+                    <span id="typing-output" class="typing-effect"></span>
+                </div>
+
+                <div id="comments-list">
+                    <figure>
+                        <blockquote cite="#cliente-satisfecho" class="text-xl italic font-serif my-8 p-4 bg-gray-100 rounded-lg">
+                            "El servicio al cliente de JARB es incomparable. Mi PC llegó configurada y lista para usar. ¡Recomendados al 100%!"
+                        </blockquote>
+                        <figcaption>- Cliente Satisfecho</figcaption>
+                    </figure>
+                </div>
+
+                <div class="comment-form-container">
+                    <h3>Déjanos tu opinión</h3>
+                    <form id="comment-form">
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="comment-name" placeholder="Nombre" required style="flex: 1;">
+                            <input type="text" id="comment-lastname" placeholder="Apellido" required style="flex: 1;">
+                        </div>
+                        <textarea id="comment-text" placeholder="Escribe tu comentario aquí..." required rows="3"></textarea>
+                        <button type="submit" class="master-button" style="width: 100%;">Enviar Comentario</button>
+                    </form>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="product-listing" style="margin-top: 0; padding-top: 0;">
+            <div class="listing-header" style="border-bottom: none;">
+                <h2>Personalización y Ubicación</h2>
+            </div>
+            <div class="listing-content" style="gap: 50px; flex-wrap: wrap;">
+                
+                <div class="advanced-card">
+                    <h3>Personaliza y Analiza</h3>
+                    <p>Selecciona un tema visual:</p>
+                    <div class="theme-switcher">
+                        <button class="theme-btn light" onclick="setTheme('light')">Claro</button>
+                        <button class="theme-btn dark" onclick="setTheme('dark')">Oscuro</button>
+                        <button class="theme-btn matrix" onclick="setTheme('matrix')">Matrix</button>
+                        <button class="theme-btn blue" onclick="setTheme('blue')">Azul</button>
+                    </div>
+                    
+                    <div style="margin-top: 30px; text-align: center;">
+                        <h4 style="margin-bottom:10px;">Simulación Ventas 2025 (Últimos Meses)</h4>
+                        <canvas id="jarb-canvas" width="400" height="250" style="border: 1px solid #ccc; display: block; margin: 0 auto; background-color: #fff;"></canvas>
+                    </div>
+                </div>
+                
+                <div class="advanced-card">
+                    <h3>Documentación y Contacto</h3>
+                    
+                    <h4 style="margin-top: 20px;">Manual de Usuario (PDF)</h4>
+                    <div style="background: var(--bg-color); padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid var(--border-color);">
+                        <p><strong>Archivo:</strong> PDF_De_Ejemplo.pdf</p>
+                        <p style="font-size: 0.9em; margin-bottom: 10px;">Créditos: Documento creado por <em>Santiago Martín de Jesús (@mardeasa)</em>.</p>
+                        <a href="PDF_De_Ejemplo.pdf" download class="master-button" style="font-size: 0.9em;"><i class="fas fa-file-pdf"></i> Descargar / Ver PDF</a>
+                    </div>
+                    
+                    <h4 style="margin-top: 30px;">Nuestra Ubicación</h4>
+                    <p style="margin-bottom: 5px;">Parque Metropolitano, León, Gto.</p>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.096957388047!2d-101.69460268474242!3d21.17336998592033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842880c982362001%3A0x6280459c3621768c!2sParque%20Metropolitano%20de%20Le%C3%B3n!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
+                        width="100%" 
+                        height="300" 
+                        style="border:0; border-radius: 8px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="cart-modal" class="cart-modal">
+        <h3>🛒 Tu Carrito</h3>
+        <ul id="cart-items-list"></ul>
+        <div style="border-top: 2px solid #eee; margin-top: 20px; padding-top: 10px;">
+            <p>Total: <strong>$<span id="cart-total">0.00</span> MXN</strong></p>
+        </div>
+        <button id="close-cart-btn" class="master-button" style="width: 100%; margin-top: 15px; background-color: #777;">Cerrar</button>
+        <button class="master-button" style="width: 100%; background-color: #28a745; margin-top: 10px;" onclick="alert('¡Gracias por tu compra en JARB!')">Proceder al Pago</button>
+    </div>
+
+    <div id="details-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="close-modal-btn" onclick="closeDetailsModal()">×</button>
+            <div id="modal-body-content">
+                </div>
+        </div>
+    </div>
+
+    <div id="notification-container" class="notification-container"></div>
+
+    <footer>
+        <div class="footer-container">
+            <p>© 2025 JARB Tienda Electrónica. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="complemento.js"></script>
+</body>
+</html>
